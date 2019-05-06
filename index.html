@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trisha's Blackjack Game</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			<!-- 	<a class="navbar-brand" href="index.html"><img src="images/1.png" class="img-responsive"></a>
+				<a class="navbar-brand" href="index.html"><img src="images/26.png" class="img-responsive"></a> -->
+			</div>
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="rules.html">Rules</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+<div class="container" id="whole-screen">
+	<h4>Welcome to Blackjack!</h4>
+	<div class="row">
+		<div class="col-md-2">
+			<button id="new-game">New Game</button>
+			<button id="deal-button">Deal Cards</button>
+		</div>
+		<div class="col-md-7">
+			<h4>Dealer</h4>
+			<p id="dealer-text-area"></p>
+		</div>
+		<div class="col-md-3">
+			<h4>Your Wallet</h4>
+			<h4 id="winnings-text"></h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2">
+			<button id="bet-button">Bet</button>
+			<h4>Bet</h4>
+			<h3 id="bet-text"></h3>
+			<h4 id="win-or-lose"></h4>
+
+
+			
+
+		</div>
+		<div class="col-md-4">
+			<h4>Your Hand</h4>
+			<p id="player-text-area"></p>
+			<button id="hit-button">Hit</button>
+			<button id="stay-button">Stay</button>
+			<button id="split-button">Split</button>
+		</div>
+
+		<div class="col-md-4">
+			<p id="player-second-text-area"></p>
+			<button id="hit-second-button">Hit</button>
+			<button id="stay-second-button">Stay</button>
+		</div>
+
+		<div class="col-md-2">
+			<h3 id="bet-text2"></h3>
+			<h4 id="win-or-lose2"></h4>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2">
+			
+
+		</div>
+		<div class="col-md-4">
+			
+			<p id="player-text-area-3">
+				
+			</p>
+		</div>
+
+		<div class="col-md-4">
+			
+			<p id="player-text-area-4">
+				
+			</p>
+		</div>
+
+		<div class="col-md-2">
+			<h4 id="win-or-lose"></h4>
+		</div>
+	</div>
+	
+</div>
+
+
+
+
+	<script src="scripts/script.js"></script>
+</body>
+</html>
