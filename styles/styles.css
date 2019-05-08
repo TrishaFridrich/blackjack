@@ -35,8 +35,23 @@
 	color: #51B0B3;
 }
 
+.row {
+	min-height: 225px;
+}
 body {
-	background-color: #00A86B;
+ 	background-color: #246231;
+ }
+
+.playing-area {
+	min-height: 600px;
+	background-image: url("file:///C:/Users/TrishaFridrich/Documents/TTS%20Javascript/Blackjack/images/table.png");
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-position: center;
+ }
+
+h4 {
+	color: white;
 }
 
 .carousel-caption {
@@ -69,6 +84,10 @@ img {
 	color: #FF5733;
 }
 
+.score {
+	color: #FFF;
+	font-size: 16px;
+}
 .boxed-text {
 	background: #273d5f;
 	color: #FFFFFF;

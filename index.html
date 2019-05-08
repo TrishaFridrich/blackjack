@@ -18,7 +18,8 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+				<h2>Welcome to Blackjack!</h2>
+				<button type="button" class="navbar-toggle btn btn-primary" data-toggle="collapse" data-target="#navbar">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -35,83 +36,67 @@
 			</div>
 		</div>
 	</nav>
-
-
-<div class="container" id="whole-screen">
-	<h4>Welcome to Blackjack!</h4>
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-2">
-			<button id="new-game">New Game</button>
-			<button id="deal-button">Deal Cards</button>
+		<div class="col-md-1">
+			<div class="row">
+				<br>
+				<button id="new-game" class="btn btn-primary">New Game</button><br>
+				<button id="bet-button" class="btn btn-primary">Bet</button><br>
+				<button id="deal-button" class="btn btn-primary">Deal Cards</button><br>
+			</div>
+			<div class="row">
+				<h4>Bet</h4>
+				<h4 id="bet-text"></h3>
+				<h4 id="win-or-lose"></h4>
+			</div>	
 		</div>
-		<div class="col-md-7">
-			<h4>Dealer</h4>
-			<p id="dealer-text-area"></p>
+		<div class="col-md-10 playing-area">
+			<div class="row">
+				<div class="col-md-4">
+				
+				</div>
+				<div class="col-md-5">
+					<h4>Dealer</h4>
+					<p id="dealer-text-area"></p>
+				</div>
+				<div class="col-md-3">
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+						
+
+				</div>
+				<div class="col-md-4">
+					<h4>Your Hand</h4>
+					<p id="player-text-area"></p>
+					<button id="hit-button" class="btn btn-primary">Hit</button>
+					<button id="stay-button" class="btn btn-primary">Stay</button>
+					<button id="split-button" class="btn btn-primary">Split</button>
+					<button id="double-down-button" class="btn btn-primary">Double Down</button>
+				</div>
+
+				<div class="col-md-3">
+					<p id="player-second-text-area"></p>
+					<button id="hit-second-button" class="btn btn-primary">Hit</button>
+					<button id="stay-second-button" class="btn btn-primary">Stay</button>
+				</div>
+
+				<div class="col-md-2">
+					<h3 id="bet-text2"></h3>
+					<h4 id="win-or-lose2"></h4>
+				</div>
+			</div>
+			
 		</div>
-		<div class="col-md-3">
+	
+		<div class="col-md-1">
 			<h4>Your Wallet</h4>
 			<h4 id="winnings-text"></h4>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-2">
-			<button id="bet-button">Bet</button>
-			<h4>Bet</h4>
-			<h3 id="bet-text"></h3>
-			<h4 id="win-or-lose"></h4>
-
-
-			
-
-		</div>
-		<div class="col-md-4">
-			<h4>Your Hand</h4>
-			<p id="player-text-area"></p>
-			<button id="hit-button">Hit</button>
-			<button id="stay-button">Stay</button>
-			<button id="split-button">Split</button>
-		</div>
-
-		<div class="col-md-4">
-			<p id="player-second-text-area"></p>
-			<button id="hit-second-button">Hit</button>
-			<button id="stay-second-button">Stay</button>
-		</div>
-
-		<div class="col-md-2">
-			<h3 id="bet-text2"></h3>
-			<h4 id="win-or-lose2"></h4>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-2">
-			
-
-		</div>
-		<div class="col-md-4">
-			
-			<p id="player-text-area-3">
-				
-			</p>
-		</div>
-
-		<div class="col-md-4">
-			
-			<p id="player-text-area-4">
-				
-			</p>
-		</div>
-
-		<div class="col-md-2">
-			<h4 id="win-or-lose"></h4>
-		</div>
-	</div>
-	
-</div>
-
-
-
 
 	<script src="scripts/script.js"></script>
 </body>

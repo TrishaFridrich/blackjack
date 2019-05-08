@@ -18,6 +18,8 @@ var hitSecondButton = document.getElementById("hit-second-button");
 var staySecondButton = document.getElementById("stay-second-button");
 var betButton = document.getElementById("bet-button");
 var dealButton = document.getElementById("deal-button");
+var doubleDownButton = document.getElementById("double-down-button");
+
 
 var dealerArea = document.getElementById('dealer-text-area');
 var playerArea = document.getElementById('player-text-area');
@@ -35,6 +37,7 @@ function showNewGameButton() {
 	hitButton.style.display = "none";
 	stayButton.style.display = "none";
 	splitButton.style.display = "none";
+	doubleDownButton.style.display = "none";
 	hitSecondButton.style.display = "none";
 	staySecondButton.style.display = "none";
 }
@@ -44,6 +47,7 @@ function showBetButton() {
 	hitButton.style.display = "none";
 	stayButton.style.display = "none";
 	splitButton.style.display = "none";
+	doubleDownButton.style.display = "none";
 	hitSecondButton.style.display = "none";
 	staySecondButton.style.display = "none";
 	dealButton.style.display = "none";
@@ -57,6 +61,7 @@ function showHitStayButton() {
 	hitButton.style.display = "inline";
 	stayButton.style.display = "inline";
 	splitButton.style.display = "none";
+	doubleDownButton.style.display = "none";
 	hitSecondButton.style.display = "none";
 	staySecondButton.style.display = "none";
 }
@@ -66,6 +71,7 @@ function showStayButton() {
 	hitButton.style.display = "none";
 	stayButton.style.display = "inline";
 	splitButton.style.display = "none";
+	doubleDownButton.style.display = "none";
 	hitSecondButton.style.display = "none";
 	staySecondButton.style.display = "none";
 }
@@ -75,6 +81,7 @@ function showHitStaySplitButton() {
 	hitButton.style.display = "inline";
 	stayButton.style.display = "inline";
 	splitButton.style.display = "inline";
+	doubleDownButton.style.display = "none";
 	hitSecondButton.style.display = "none";
 	staySecondButton.style.display = "none";
 }
@@ -84,6 +91,7 @@ function showNoButton() {
 	hitButton.style.display = "none";
 	stayButton.style.display = "none";
 	splitButton.style.display = "none";
+	doubleDownButton.style.display = "none";
 	hitSecondButton.style.display = "none";
 	staySecondButton.style.display = "none";
 }
@@ -93,12 +101,23 @@ function showSecondHandButtons() {
 	hitButton.style.display = "none";
 	stayButton.style.display = "none";
 	splitButton.style.display = "none";
+	doubleDownButton.style.display = "none";
 	hitSecondButton.style.display = "inline";
 	staySecondButton.style.display = "inline";
 }
 
+function showDoubleDownButton() {
+	newGameButton.style.display = "none";
+	hitButton.style.display = "inline";
+	stayButton.style.display = "inline";
+	splitButton.style.display = "none";
+	doubleDownButton.style.display = "inline";
+	hitSecondButton.style.display = "none";
+	staySecondButton.style.display = "none";
+}
+
 showBetButton();
-winningsArea.innerHTML = winnings;
+winningsArea.innerHTML = "$"+winnings;
 
 newGameButton.addEventListener("click",function(){
 	if (winnings > 0){
@@ -131,11 +150,28 @@ dealButton.addEventListener("click",function(){
 	initialDeal();
 	showPlayerCardsScore();
 	showDealerCards();
+
+	if (playerScore === 11 || playerScore === 10) {
+		showDoubleDownButton();
+	}
 });
 
 hitButton.addEventListener("click",function(){
 	playerCards.push(dealCard());
 	showPlayerCardsScore();
+});
+
+
+doubleDownButton.addEventListener("click",function(){
+	bet += bet;
+	winnings -= bet;
+	betArea.innerHTML = "$"+bet;
+	winningsArea.innerHTML = "$"+winnings;
+	playerCards.push(dealCard());
+	showPlayerCardsScore();
+	dealerAllCardsScore();
+	dealerPlay();
+	showNewGameButton();
 });
 
 
@@ -170,8 +206,8 @@ betButton.addEventListener("click",function(){
 	if (winnings > 0) {
 		bet += 25;
 		winnings -= 25;
-		betArea.innerHTML = bet;
-		winningsArea.innerHTML = winnings;
+		betArea.innerHTML = "$"+bet;
+		winningsArea.innerHTML = "$"+winnings;
 		dealButton.style.display = "inline";
 	}
 });
@@ -266,18 +302,16 @@ function showPlayerCardsScore() {
 		playerCardsStr += "<img src='images/"+ playerCards[i] + ".png'>"
 	}
 
-	playerArea.innerHTML = playerCardsStr + "<br>" + playerScore + " points";
+	playerArea.innerHTML = playerCardsStr + "<br><p class='score'>" + playerScore + " points</p>";
 	
 	if (playerScore > 21) {
 		showNewGameButton();
 		dealerAllCardsScore();
 		gameOver(playerScore,gameOverArea,bet); 
-		gameOver(playerSecondScore,gameOverArea2,splitBet); 
-	// } else if (playerScore === 21) {
-	// 	showNewGameButton();
-	// 	dealerAllCardsScore();
-	// 	dealerPlay();
-	// 	gameOver(playerScore,gameOverArea); 
+		if (playerSecondScore > 0){
+			gameOver(playerSecondScore,gameOverArea2,splitBet);
+		} 
+
 	} else {
 		console.log("Less than 21");
 	}
@@ -287,7 +321,7 @@ function showPlayerCardsScore() {
 function showPlayerSecondHand() {
  	splitBet = bet;
  	winnings = winnings - splitBet;
- 	winningsArea.innerHTML = winnings;
+ 	winningsArea.innerHTML = "$"+winnings;
  	playerSecondScore = calcScore(playerSecondHand);
  	console.log(playerSecondScore);
 	var playerCardsStr = '';
@@ -295,8 +329,8 @@ function showPlayerSecondHand() {
 		playerCardsStr += "<img src='images/"+ playerSecondHand[i] + ".png'>"
 	}
 
-	playerSecondArea.innerHTML = "<h4>Your Second Hand</h4>" + playerCardsStr + "<br>" +playerSecondScore + " points";
-	splitBetArea.innerHTML = "<h4>Bet</h4>" + splitBet;
+	playerSecondArea.innerHTML = "<h4>Your Second Hand</h4>" + playerCardsStr + "<br><p class='score'>" +playerSecondScore + " points</p>";
+	splitBetArea.innerHTML = "<h4>Bet</h4>$" + splitBet;
 	
 	if (playerSecondScore >= 21) {
 		showHitStayButton();
@@ -326,7 +360,7 @@ function dealerAllCardsScore() {
 		dealerCardsStr += "<img src='images/"+ dealerCards[i] + ".png'>"
 	}
 
-	dealerArea.innerHTML = dealerCardsStr + "<br>" + dealerScore + " points";
+	dealerArea.innerHTML = dealerCardsStr + "<br><br><p class='score'>" + dealerScore + " points</p>";
 }
 
 function dealerPlay() {
@@ -357,7 +391,17 @@ function gameOver(score,textarea,betType) {
 
 	}
 
-	else if (score <= 21 && (score > dealerScore || dealerScore > 21)) {
+	else if (score < 21 && (score > dealerScore || dealerScore > 21)) {
+		gameOverText = "YOU WIN!";
+		winnings = winnings + (betType * 2);
+	}
+
+	else if (score = 21 && (score > dealerScore || dealerScore > 21) && playerCards.length== 2) {
+		gameOverText = "YOU WIN!";
+		winnings = winnings + (betType * 3/2);
+	}
+
+	else if (score = 21 && (score > dealerScore || dealerScore > 21)) {
 		gameOverText = "YOU WIN!";
 		winnings = winnings + (betType * 2);
 	}
@@ -371,6 +415,6 @@ function gameOver(score,textarea,betType) {
 	}
 
 	textarea.innerHTML = gameOverText;
-	winningsArea.innerHTML = winnings;
+	winningsArea.innerHTML = "$"+winnings;
 	showNewGameButton();
 }
