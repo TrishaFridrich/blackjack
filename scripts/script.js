@@ -268,7 +268,7 @@ function showPlayerCardsScore() {
 
 	playerArea.innerHTML = playerCardsStr + "<br>" + playerScore + " points";
 	
-	if (playerScore >= 21) {
+	if (playerScore > 21) {
 		showNewGameButton();
 		dealerAllCardsScore();
 		gameOver(playerScore,gameOverArea,bet); 
